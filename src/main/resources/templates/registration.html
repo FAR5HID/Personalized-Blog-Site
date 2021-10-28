@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <div th:replace="/fragments/header :: header-css"/>
+
+</head>
+<body>
+
+<div th:replace="/fragments/header :: header"/>
+
+<div>
+
+    <div th:if="${successMessage}" th:utext="${successMessage}"></div>
+
+    <div>
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+            <form autocomplete="off" action="#" th:action="@{/registration}"
+                  th:object="${user}" method="post" role="form">
+
+                <div>
+                    <label th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></label>
+                    <input type="text" th:field="*{username}" placeholder="Username"/>
+                </div>
+
+                <div>
+                    <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}"</label>
+                    <input type="text" th:field="*{email}" placeholder="Email"/>
+                </div>
+
+                <div>
+                    <label th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></label>
+                    <input type="password" th:field="*{password}" placeholder="Password"/>
+                </div>
+
+
+                <div>
+                    <div class="col-sm-3">
+                        <input type="submit" class="btn btn-primary btn-block" value="Submit"/>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div th:replace="/fragments/footer :: footer"/>
+
+</body>
+</html>
